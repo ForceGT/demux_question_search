@@ -2,12 +2,18 @@ import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomSheet extends StatefulWidget {
+  final BuildContext contextWithScaffold;
+
+  CustomBottomSheet({this.contextWithScaffold});
+
   @override
   _CustomBottomSheetState createState() => _CustomBottomSheetState();
 }
 
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
-  List<String> tags = [];
+  bool showOk = false;
+
+  List<String> _tags = [];
 
   List<String> companies = [
     'Google',
@@ -39,12 +45,28 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 topRight: Radius.circular(8.0), topLeft: Radius.circular(8.0)),
           ),
           width: double.maxFinite,
-          child: Text("Filters",
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: Colors.blueGrey,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Filters",
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20)),
+              showOk
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                          child: Text("DONE", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                          onTap: () {
+                            //debugPrint("Tags: $_tags");
+                            Navigator.pop(widget.contextWithScaffold, _tags);
+                          }),
+                    )
+                  : SizedBox.shrink()
+            ],
+          ),
         ),
         Divider(
           indent: 20,
@@ -96,11 +118,12 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     return Flexible(
       fit: FlexFit.loose,
       child: ChipsChoice<String>.multiple(
-        value: tags,
+        value: _tags,
         onChanged: (state) {
           debugPrint("State $state");
           setState(() {
-            tags = state;
+            _tags = state;
+            showOk = state.isNotEmpty;
           });
         },
         choiceItems: C2Choice.listFrom(
