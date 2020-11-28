@@ -37,3 +37,7 @@ The assignment involved testing the following
 | Screen 1      | Screen 2
 |---   	|---   	
 |![](screens/screen_1.png) |![](screens/screen_2.png)
+
+
+### Download
+Download the latest release from [Here](apk/latest_release.apk)
