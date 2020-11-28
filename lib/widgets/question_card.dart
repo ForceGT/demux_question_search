@@ -1,4 +1,4 @@
-import 'dart:math';
+
 
 import 'package:chips_choice/chips_choice.dart';
 import 'package:demux_question_search/model/question.dart';
@@ -25,8 +25,7 @@ class _QuestionCardState extends State<QuestionCard> {
       padding: const EdgeInsets.only(left: 4.0, right: 4.0),
       child: Card(
         borderOnForeground: false,
-        shadowColor: Colors.blueGrey,
-        elevation: 8.0,
+        elevation: 4.0,
         color: Colors.grey[200],
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15))),
@@ -64,5 +63,7 @@ class _QuestionCardState extends State<QuestionCard> {
     );
   }
 
-  Widget getBadgeWitTitle() {}
+  Widget getBadgeWitTitle() {
+
+  }
 }
