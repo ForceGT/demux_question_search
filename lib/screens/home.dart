@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:demux_question_search/model/question.dart';
 import 'package:demux_question_search/repository/network_service.dart';
 import 'package:demux_question_search/widgets/bottom_sheet.dart';
+import 'package:demux_question_search/widgets/question_card.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,14 +18,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text("Hey"),
+        title: Text("Questions"),
         actions: [
           IconButton(
               icon: Icon(Icons.filter_alt_outlined),
               onPressed: () {
                 debugPrint("Icon Filter Pressed");
                 showModalBottomSheet(
-                  elevation: 12.0,
+                    elevation: 12.0,
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -49,8 +47,8 @@ class _HomePageState extends State<HomePage> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
                   var question = snapshot.data[index];
-                  return ListTile(
-                    title: Text("${question.title}"),
+                  return QuestionCard(
+                    question: question,
                   );
                 });
             // return Center(
