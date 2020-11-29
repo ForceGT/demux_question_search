@@ -1,4 +1,4 @@
-name: question_search
+name: demux_question_search
 description: A Flutter application made for the screening process for the internship at Demux Academy
 
 # The following line prevents the package from being accidentally published to
