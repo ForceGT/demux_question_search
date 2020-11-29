@@ -34,10 +34,10 @@ The assignment involved testing the following
 
 ### Some Screens
 
-| Screen 1      | Screen 2
-|---   	|---   	
-|![](screens/screen_1.png) |![](screens/screen_2.png)
+| Screen 1      | Screen 2 | Screen 3
+|---   	|---  |---
+|![](screens/screen_1.png) |![](screens/screen_2.png)|![](screens/screen_3.png)
 
 
 ### Download
-Download the latest release from [Here](apk/latest_release.apk)
+Download the latest release from [Here](apk/latest-release.apk)
