@@ -115,10 +115,10 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   }
 
   Widget getSectionContent({List<String> values}) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Flexible(
-        fit: FlexFit.loose,
+    return Flexible(
+      fit: FlexFit.loose,
+      child: Align(
+        alignment: Alignment.centerLeft,
         child: ChipsChoice<String>.multiple(
           value: _tags,
           onChanged: (state) {
