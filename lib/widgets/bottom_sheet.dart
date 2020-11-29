@@ -56,7 +56,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                       fontSize: 20)),
               showOk
                   ? Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(right:8.0, top: 8.0),
                       child: GestureDetector(
                           child: Text("DONE", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                           onTap: () {
@@ -115,30 +115,33 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   }
 
   Widget getSectionContent({List<String> values}) {
-    return Flexible(
-      fit: FlexFit.loose,
-      child: ChipsChoice<String>.multiple(
-        value: _tags,
-        onChanged: (state) {
-          debugPrint("State $state");
-          setState(() {
-            _tags = state;
-            showOk = state.isNotEmpty;
-          });
-        },
-        choiceItems: C2Choice.listFrom(
-            source: values,
-            value: (index, value) {
-              return value;
-            },
-            label: (index, value) {
-              return value;
-            }),
-        choiceStyle: C2ChoiceStyle(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Flexible(
+        fit: FlexFit.loose,
+        child: ChipsChoice<String>.multiple(
+          value: _tags,
+          onChanged: (state) {
+            debugPrint("State $state");
+            setState(() {
+              _tags = state;
+              showOk = state.isNotEmpty;
+            });
+          },
+          choiceItems: C2Choice.listFrom(
+              source: values,
+              value: (index, value) {
+                return value;
+              },
+              label: (index, value) {
+                return value;
+              }),
+          choiceStyle: C2ChoiceStyle(
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+          ),
+          choiceActiveStyle:
+              C2ChoiceStyle(color: Colors.pink, brightness: Brightness.dark),
         ),
-        choiceActiveStyle:
-            C2ChoiceStyle(color: Colors.pink, brightness: Brightness.dark),
       ),
     );
   }
